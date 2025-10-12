@@ -2,13 +2,13 @@ import { useState } from "react";
 import { login } from "../api";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [contrasena, setContrasena] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data = await login(email, password);
+    const data = await login(correo, contrasena);
     if (data.token) {
       localStorage.setItem("token", data.token);
       window.location.href = "/cdts";
@@ -28,8 +28,8 @@ export default function Login() {
               type="email"
               className="form-control"
               placeholder="ejemplo@gmail.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
               required
             />
           </div>
@@ -40,8 +40,8 @@ export default function Login() {
               type="password"
               className="form-control"
               placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={contrasena}
+              onChange={(e) => setContrasena(e.target.value)}
               required
             />
           </div>
