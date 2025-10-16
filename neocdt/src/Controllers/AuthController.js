@@ -1,24 +1,19 @@
-const Usuario = require('../models/Usuario');
+const Usuario = require('../Models/Usuario');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
-  const { nombreUsuario, nombreCompleto, correo, contrasena, numeroDocumento, tipoDocumento } = req.body;
+  const { nombreUsuario, nombreCompleto, correo, contrasena } = req.body;
+
   try {
-    const existing = await Usuario.findOne({ $or: [{ correo }, { nombreUsuario }] });
-    if (existing) return res.status(400).json({ error: 'Usuario ya existe' });
+    const existeUsuario = await Usuario.findOne({ correo });
+    if (existeUsuario) return res.status(400).json({ error: "Correo ya registrado" });
 
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(contrasena, salt);
+    const nuevoUsuario = new Usuario({ nombreUsuario, nombreCompleto, correo, contrasena });
+    await nuevoUsuario.save();
 
-    const user = new Usuario({
-      nombreUsuario, nombreCompleto, correo,
-      contrasena: hash, numeroDocumento, tipoDocumento
-    });
-    await user.save();
-    res.status(201).json({ message: 'Registrado' });
+    res.status(201).json({ message: "Usuario registrado correctamente" });
   } catch (err) {
-    /* istanbul ignore next */
     res.status(500).json({ error: err.message });
   }
 };
@@ -36,13 +31,18 @@ exports.login = async (req, res) => {
     await user.save();
 
     const token = jwt.sign(
-      { userId: user._id, rol: user.rol },
+      { userId: user._id, rol: user.rol, nombreUsuario: user.nombreUsuario },
       process.env.JWT_SECRET,
       { expiresIn: '8h' }
     );
-    res.json({ token });
+
+    res.json({ 
+      token, 
+      rol: user.rol, 
+      nombreUsuario: user.nombreUsuario 
+    });
   } catch (err) {
-    /* istanbul ignore next */
     res.status(500).json({ error: err.message });
   }
 };
+
