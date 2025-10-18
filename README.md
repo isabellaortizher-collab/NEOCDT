@@ -29,12 +29,16 @@ Permite abrir, consultar y renovar CDTs de forma 100% digital, mejorando la efic
 - Validación de datos y manejo de errores.
 
 ##  Instrucciones de ejecución
+
 **Backend**
+
 Instalar dependencias:
   npm install
 Ejecutar el servidor:
   npm run dev
+
 **Fronted**
+
 Ir al directorio del frontend:
   cd ../frontend
 Instalar dependencias:
