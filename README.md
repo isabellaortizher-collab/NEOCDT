@@ -36,9 +36,12 @@ Permite abrir, consultar y renovar CDTs de forma 100% digital, mejorando la efic
    ```bash
    git clone https://github.com/<usuario>/<repositorio>.git
    cd backend
-2. Instalar dependencias:
-   npm install
+2. **Instalar dependencias**
+   ```bash
+  npm install
+  
 3. Ejecutar el servidor:
+   ```bash
    npm run dev
 
 
