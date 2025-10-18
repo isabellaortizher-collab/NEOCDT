@@ -4,3 +4,10 @@
 
 **NeoCDT** es un módulo digital de **NeoBank** para la **gestión de Certificados de Depósito a Término (CDTs)**.  
 Permite abrir, consultar y renovar CDTs de forma 100% digital, mejorando la eficiencia y experiencia del usuario.
+
+Arquitectura (prototipo inicial)
+
+- **Frontend:** React.js (estructura base y rutas iniciales).  
+- **Backend:** Node.js.  
+- **Base de datos:** MongoDB.  
+- **Control de calidad:** SonarQube. 
