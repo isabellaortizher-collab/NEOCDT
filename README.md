@@ -1,13 +1,13 @@
-**Proyecto académico – Ingeniería de Software 2 (UAO, 2025-2)**  
-**Equipo:** Samuel Salazar, Roiman Urrego, Isabela Cabezas, Isabella Ortíz, Sebastián Bustamante  
+##**Proyecto académico – Ingeniería de Software 2**  
+##**Equipo:** Samuel Salazar, Roiman Urrego, Isabela Cabezas, Isabella Ortíz, Sebastián Bustamante  
 **Docente:** Rodrigo Escobar López  
 
 **NeoCDT** es un módulo digital de **NeoBank** para la **gestión de Certificados de Depósito a Término (CDTs)**.  
 Permite abrir, consultar y renovar CDTs de forma 100% digital, mejorando la eficiencia y experiencia del usuario.
 
-**Avance general:** 
+##**Avance general:** 
 
-**Incluye:**
+##**Incluye:**
 - ✅ **Login funcional** con validación de credenciales.  
 - ✅ **Backend inicial:** CRUD básico de `SolicitudesCDT` (sin interfaz pulida).  
 - ✅ **Frontend inicial:** consumo del backend y vistas básicas de gestión.  
@@ -15,14 +15,14 @@ Permite abrir, consultar y renovar CDTs de forma 100% digital, mejorando la efic
 - ✅ **Pruebas unitarias iniciales** y **1–2 pruebas funcionales.**  
 - ✅ **Primer análisis de SonarQube** con hallazgos y acciones de mejora.
   
-**Arquitectura (prototipo inicial)**
+##**Arquitectura (prototipo inicial)**
 
 - **Frontend:** React.js (estructura base y rutas iniciales).  
 - **Backend:** Node.js + Express.  
 - **Base de datos:** MongoDB.  
 - **Control de calidad:** SonarQube.
 
-**Funcionalidades actuales**
+##**Funcionalidades actuales**
 
 - Registro y autenticación de usuarios.
 - Comunicación básica entre frontend y backend.  
@@ -30,15 +30,17 @@ Permite abrir, consultar y renovar CDTs de forma 100% digital, mejorando la efic
 
 ##  Instrucciones de ejecución
 
-**Backend**
+### Backend (Node.js)
 
-Instalar dependencias:
- 
-  npm install
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/<usuario>/<repositorio>.git
+   cd backend
+2. Instalar dependencias:
+   npm install
+3. Ejecutar el servidor:
+   npm run dev
 
-Ejecutar el servidor:
- 
-  npm run dev
 
 **Fronted**
 
