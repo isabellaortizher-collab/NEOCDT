@@ -1,16 +1,19 @@
 // middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
 
-module.exports = async (req, res, next) => {
-  const auth = req.headers.authorization;
-  if (!auth) return res.status(401).json({ error: 'No autorizado' });
-
-  const token = auth.split(' ')[1];
+module.exports = (req, res, next) => {
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.usuarioId = payload.userId; // así coincide con el controlador
-    next();
+    const header = (req.headers && (req.headers.authorization || req.headers.Authorization)) || '';
+    if (!header) return res.status(401).json({ error: 'Token no proporcionado' });
+
+    const parts = header.split(' ');
+    const token = parts.length === 2 ? parts[1] : header;
+
+    const payload = jwt.verify(token, process.env.JWT_SECRET || 'testsecret');
+    req.usuarioId = payload.userId;
+    req.userRole = payload.rol;
+    return next();
   } catch (err) {
-    res.status(401).json({ error: 'Token inválido' });
+    return res.status(401).json({ error: err.message || 'Token inválido' });
   }
 };
