@@ -55,5 +55,5 @@ Permite abrir, consultar y renovar CDTs de forma 100% digital, mejorando la efic
    npm install
 3. Ejecutar el servidor de desarrollo:
    ```bash
-   npm run dev
+   npm start
 
