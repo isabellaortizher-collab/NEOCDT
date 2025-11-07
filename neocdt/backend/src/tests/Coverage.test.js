@@ -59,17 +59,12 @@ afterEach(() => {
   jest.restoreAllMocks();
 });
 
-/**
- * Helpers
- */
 function makeRes() {
   return {
     status: jest.fn().mockReturnThis(),
     json: jest.fn().mockReturnThis(),
   };
 }
-
-
 
 /**
  * Unit tests directos al controlador 
@@ -183,7 +178,7 @@ describe('Coverage final - pruebas unitarias directas a controlador y Auth.regis
     const res = makeRes();
 
     CDT.findById.mockResolvedValue({ _id: 'cdt123' });
-    // Mock the save method on the prototype to reject
+    // Mockear el metodo de guardado en el prototipo para rechazar 
     ContenidoCDT.prototype.save.mockRejectedValueOnce(new Error('simulated save error'));
 
     await cdtCtrl.actualizarContenido(req, res);
@@ -214,7 +209,7 @@ describe('Coverage final - pruebas unitarias directas a controlador y Auth.regis
 
     const validationError = new Error('simulated validation error');
     validationError.name = 'ValidationError';
-    // Mock the save method on the prototype to reject with ValidationError
+    // Mockear el metodo de guardado en el prototipo para rechazar con ValidationError
     CDT.prototype.save.mockRejectedValueOnce(validationError);
 
     await cdtCtrl.crearCDT(req, res);
@@ -231,7 +226,7 @@ describe('Coverage final - pruebas unitarias directas a controlador y Auth.regis
     CDT.findById.mockResolvedValue({ _id: 'cdt123' });
     const validationError = new Error('simulated validation error');
     validationError.name = 'ValidationError';
-    // Mock the save method on the prototype to reject with ValidationError
+    // Mockear el metodo de guardado en el prototipo para rechazar con ValidationError
     ContenidoCDT.prototype.save.mockRejectedValueOnce(validationError);
 
     await cdtCtrl.actualizarContenido(req, res);
@@ -265,7 +260,8 @@ describe('Coverage final - pruebas unitarias directas a controlador y Auth.regis
       renovacionAutomatica: true
     };
     CDT.findById.mockResolvedValue(mockCDT);
-    // Mock the save method on the prototype to reject for the new CDT instance
+
+    // Mockear el metodo de guardado en el prototipo para rechazar el nuevo CDT instance
     CDT.prototype.save.mockRejectedValueOnce(new Error('save error'));
 
     await cdtCtrl.renovarCDT(req, res);

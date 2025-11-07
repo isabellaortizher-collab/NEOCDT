@@ -152,7 +152,7 @@ test('middleware acepta token válido', async () => {
   const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
   const next = jest.fn();
 
-  // Mock jwt.verify to return a valid payload
+  // Mock jwt.verify para retornar un payload válido
   const jwt = require('jsonwebtoken');
   jwt.verify.mockReturnValue({ userId: 'user123', rol: 'Cliente' });
 
