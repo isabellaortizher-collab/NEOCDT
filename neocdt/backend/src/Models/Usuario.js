@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-// Minimal placeholder to satisfy require during tests (tests mock this module).
+// Clase placeholder para pruebas (los tests hacen mock de este módulo)
 class Usuario {
   constructor(data) {
     Object.assign(this, data);
@@ -11,7 +11,7 @@ class Usuario {
     return Promise.resolve(this);
   }
 
-  // Nota: los tests hacen jest.mock(...) sobre este módulo, así que esta impl no se usa en los tests.
+  // Nota: Los tests hacen jest.mock(...) sobre este módulo
   static findOne(query) {
     return Promise.resolve(null);
   }
@@ -19,11 +19,12 @@ class Usuario {
 
 module.exports = Usuario;
 
-// Only define schema if mongoose is connected (not in tests)
+// Solo definir esquema si mongoose está conectado (no en pruebas)
 if (mongoose.connection && mongoose.connection.readyState > 0) {
   try {
     const Schema = mongoose.Schema;
 
+    // Esquema del modelo Usuario
     const UsuarioSchema = new Schema({
       nombreUsuario: { type: String, required: true, unique: true },
       nombreCompleto: { type: String, required: true },
@@ -37,6 +38,7 @@ if (mongoose.connection && mongoose.connection.readyState > 0) {
       fechaUltimoIngreso: { type: Date }
     });
 
+    // Middleware pre-save para hashear contraseña
     UsuarioSchema.pre('save', async function(next) {
       this.fechaActualizacion = new Date();
 
@@ -51,13 +53,14 @@ if (mongoose.connection && mongoose.connection.readyState > 0) {
       }
     });
 
+    // Método para comparar contraseñas
     UsuarioSchema.methods.compararContrasena = async function(contrasenaIngresada) {
       return await bcrypt.compare(contrasenaIngresada, this.contrasena);
     };
 
     module.exports = (mongoose.models && mongoose.models.Usuario) || mongoose.model('Usuario', UsuarioSchema);
   } catch (error) {
-    // In test environment, mongoose might not be properly set up
-    console.log('Mongoose schema creation failed, likely in test environment');
+    // En entorno de pruebas, mongoose podría no estar configurado correctamente
+    console.log('Error al crear esquema de Mongoose, probablemente en entorno de pruebas');
   }
 }
