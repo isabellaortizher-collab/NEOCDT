@@ -1,0 +1,16 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
+const app = express();
+app.use(express.json());
+
+// routes
+const authRoutes = require('./routes/auth');
+const cdtRoutes = require('./routes/cdt');
+
+app.use('/api/auth', authRoutes);
+app.use('/api/cdts', cdtRoutes);
+
+module.exports = app;

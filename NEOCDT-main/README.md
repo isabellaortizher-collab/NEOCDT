@@ -1,0 +1,59 @@
+## **Proyecto académico – Ingeniería de Software 2**  
+## **Equipo:** Samuel Salazar, Roiman Urrego, Isabela Cabezas, Isabella Ortíz, Sebastián Bustamante  
+**Docente:** Rodrigo Escobar López  
+
+**NeoCDT** es un módulo digital de **NeoBank** para la **gestión de Certificados de Depósito a Término (CDTs)**.  
+Permite abrir, consultar y renovar CDTs de forma 100% digital, mejorando la eficiencia y experiencia del usuario.
+
+## **Avance general:** 
+
+## **Incluye:**
+- ✅ **Login funcional** con validación de credenciales.  
+- ✅ **Backend inicial:** CRUD básico de `SolicitudesCDT` (sin interfaz pulida).  
+- ✅ **Frontend inicial:** consumo del backend y vistas básicas de gestión.  
+- ✅ **Historias de usuario** con criterios de aceptación en **Gherkin**.  
+- ✅ **Pruebas unitarias iniciales** y **1–2 pruebas funcionales.**  
+- ✅ **Primer análisis de SonarQube** con hallazgos y acciones de mejora.
+  
+## **Arquitectura (prototipo inicial)**
+
+- **Frontend:** React.js (estructura base y rutas iniciales).  
+- **Backend:** Node.js + Express.  
+- **Base de datos:** MongoDB.  
+- **Control de calidad:** SonarQube.
+
+## **Funcionalidades actuales**
+
+- Registro y autenticación de usuarios.
+- Comunicación básica entre frontend y backend.  
+- Validación de datos y manejo de errores.
+
+##  Instrucciones de ejecución
+
+### Backend 
+
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/<usuario>/<repositorio>.git
+   cd backend
+2. Instalar dependencias
+   ```bash
+   npm install
+  
+3. Ejecutar el servidor:
+   ```bash
+   npm run dev
+
+
+### **Fronted**
+
+1. Ir al directorio del frontend:
+   ```bash
+   cd ../frontend
+2. Instalar dependencias:
+   ```bash
+   npm install
+3. Ejecutar el servidor de desarrollo:
+   ```bash
+   npm start
+
